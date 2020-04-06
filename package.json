@@ -9,6 +9,7 @@
   "author": "Decoded_Cipher",
   "license": "ISC",
   "dependencies": {
+    "dotenv": "^8.2.0",
     "node-telegram-bot-api": "^0.40.0"
   }
 }
