@@ -29,5 +29,5 @@ bot.on('message', function onMessage(msg) {
             console.log('Error: ', e);
         }
         debugger;
-    })
-})()
+    })()
+})
