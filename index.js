@@ -21,15 +21,15 @@ const getData = async function() {
         json: true
     })
     console.log(json)
-    return json.map(res => ({
-        source: res.articles[0].source.name,
-        author: res.articles[0].author
-    }));
+    // return json.map(res => ({
+    //     source: res.articles[0].source.name,
+    //     author: res.articles[0].author
+    // }));
 };
 (async function() {
     try {
-        const people =  await getData();
-        console.log(people);
+        await getData();
+        // console.log(people);
     } catch(e) {
         console.log('Error: ', e);
     }
