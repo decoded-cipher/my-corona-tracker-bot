@@ -20,21 +20,14 @@ bot.on('message', function onMessage(msg) {
             url: 'http://newsapi.org/v2/top-headlines?q=corona&apiKey=4a0bb231b1db4357b1278797ebc07943&country=in&pageSize=1',
             json: true
         })
-        var res = JSON.parse(body);
-        console.log(res)
-        // return json.map(res => ({
-        //     source: res.articles[0].source.name,
-        //     author: res.articles[0].author
-        // }));
-    };
+        console.log(res)   
+    }
     (async function () {
         try {
             await getData();
-            // console.log(people);
         } catch (e) {
             console.log('Error: ', e);
         }
         debugger;
     })
-
-})
+})()
