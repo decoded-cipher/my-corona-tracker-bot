@@ -12,5 +12,33 @@ const bot = new TelegramBot(TOKEN, options);
 bot.setWebHook(`${url}/bot${TOKEN}`);
 
 bot.on('message', function onMessage(msg) {
-  bot.sendMessage(msg.chat.id, 'I am alive on Heroku!');
+//   bot.sendMessage(msg.chat.id, 'I am alive on Heroku!');
+    if(msg.text == "/news") {
+        var chatId = msg.chat.id;
+        request(`http://newsapi.org/v2/top-headlines?q=${news}&apiKey=4a0bb231b1db4357b1278797ebc07943&country=in`,function(error,response,body) {
+    if(!error && response.statusCode == 200) {
+        bot.sendMessage(chatId, `_Fetching today's headlines on ${news}..._`, {parse_mode: 'Markdown'})
+        .then(function(msg) {
+        var res = JSON.parse(body);
+
+        for (var result = 1; result <= res.totalResults; result++) {
+          
+            // var d = new Date(res.articles[result-1].publishedAt);
+            // var presentTime = d.toLocaleTimeString();
+            // var presentDate = d.toLocaleDateString();
+
+            bot.sendMessage(chatId,
+                'Source :  ' + res.articles[result-1].source.name + '\n' +
+                'Author:  '  + res.articles[result-1].author + '\n' +
+                'Published At :  ' + presentDate + ', ' + presentTime + '\n\n' +
+                res.articles[result-1].title + '\n\n' +
+                res.articles[result-1].description + '\n\n' +
+                res.articles[result-1].content + '\n\n' +
+                'Link :\n' + res.articles[result-1].url
+              )
+            }
+          })
+        }
+      })
+    }
 });
