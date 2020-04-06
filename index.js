@@ -15,9 +15,9 @@ bot.on('message', function onMessage(msg) {
 //   bot.sendMessage(msg.chat.id, 'I am alive on Heroku!');
     if(msg.text == "/news") {
         var chatId = msg.chat.id;
-        request(`http://newsapi.org/v2/top-headlines?q=${news}&apiKey=4a0bb231b1db4357b1278797ebc07943&country=in`,function(error,response,body) {
+        request(`http://newsapi.org/v2/top-headlines?q=corona&apiKey=4a0bb231b1db4357b1278797ebc07943&country=in`,function(error,response,body) {
     if(!error && response.statusCode == 200) {
-        bot.sendMessage(chatId, `_Fetching today's headlines on ${news}..._`, {parse_mode: 'Markdown'})
+        bot.sendMessage(chatId, `_Fetching today's headlines on Corona..._`, {parse_mode: 'Markdown'})
         .then(function(msg) {
         var res = JSON.parse(body);
 
