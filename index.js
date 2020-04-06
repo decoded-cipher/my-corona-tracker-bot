@@ -36,4 +36,4 @@ const getData = async function() {
     debugger;
 })
 
-})()
+})
