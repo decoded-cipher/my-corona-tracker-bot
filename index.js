@@ -12,7 +12,7 @@ const bot = new TelegramBot(TOKEN, options);
 bot.setWebHook(`${url}/bot${TOKEN}`);
 
 bot.on('message', function onMessage(msg) {
-    //   bot.sendMessage(msg.chat.id, 'I am alive on Heroku!');
+      bot.sendMessage(msg.chat.id, 'I am alive on Heroku!');
 
     const request = require('request-promise')
     const getData = async function () {
@@ -29,5 +29,5 @@ bot.on('message', function onMessage(msg) {
             console.log('Error: ', e);
         }
         debugger;
-    })()
+    })
 })
