@@ -20,7 +20,7 @@ bot.on('message', function onMessage(msg) {
             url: 'http://newsapi.org/v2/top-headlines?q=corona&apiKey=4a0bb231b1db4357b1278797ebc07943&country=in&pageSize=1',
             json: true
         })
-        console.log(res)   
+        console.log(json)   
     }
     (async function () {
         try {
