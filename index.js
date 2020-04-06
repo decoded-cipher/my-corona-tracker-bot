@@ -21,10 +21,10 @@ const getData = async function() {
         json: true
     })
     console.log(json)
-    // return json.map(res => ({
-    //     source: res.articles[0].source.name,
-    //     author: res.articles[0].author
-    // }));
+    return json.map(res => ({
+        source: res.articles[0].source.name,
+        author: res.articles[0].author
+    }));
 };
 (async function() {
     try {
