@@ -36,7 +36,8 @@ bot.onText(/\/news/, (msg, match) => {
     const start = match.input.split(' ')[1];
   
     if (start === undefined) {
-        bot.sendMessage(msg.chat.id, 'I am alive on Heroku!');
+        console.log("Started...")
+        // bot.sendMessage(msg.chat.id, 'I am alive on Heroku!');
     }
 })
 
