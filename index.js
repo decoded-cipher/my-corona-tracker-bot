@@ -27,7 +27,7 @@ const bot = new TelegramBot(TOKEN, options);
 bot.setWebHook(`${url}/bot${TOKEN}`);
 
 bot.on('message', function onMessage(msg) {
-    bot.sendMessage(msg.chat.id, 'I am alive on Heroku!');
+    bot.sendMessage(msg.chat.id, 'Hey, I am alive on Heroku!... But still under Construction:');
 
 })
 
@@ -43,7 +43,7 @@ bot.onText(/\/news/, (msg, match) => {
         let responseToSend;
         if (response.status === 'ok' && response.articles.length > 0) {
             const articles = response.articles.map(article => {
-                 bot.sendMessage(chatId,{
+                return {
                     "title": article.title,
                     "image_url": article.urlToImage,
                     "subtitle": article.description,
@@ -52,8 +52,9 @@ bot.onText(/\/news/, (msg, match) => {
                         "url": article.url,
                         "title": "Read Full Article"
                     }]
-                })
+                }
             });
+            bot.sendMessage(msg.chat.id, article.title)
 
         }
     })
