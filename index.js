@@ -21,6 +21,7 @@ bot.onText(/\/news/, (msg, match) => {
     var chatId = msg.chat.id;
     if (news === undefined) {
         var url = `http://newsapi.org/v2/top-headlines?q=corona&apiKey=4a0bb231b1db4357b1278797ebc07943&country=in&pageSize=1`
+        console.log('hai...')
         request(url, function (error, response, body) {
             if (!error && response.statusCode == 200) {
                 bot.sendMessage(chatId, `_Fetching today's headlines on Corona..._`, {
