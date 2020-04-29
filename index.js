@@ -1,32 +1,29 @@
-const express = require('express');
-const bodyParser = require('body-parser');
-const NewsAPI = require('newsapi');
-const newsapi = new NewsAPI('YOUR-API-KEY-HERE');
-const server = express();
+var PORT = process.env.PORT || 3000;
+process.env.NTBA_FIX_319 = 1;
 
-server.use(bodyParser.urlencoded({
-    extended: true
-}));
-server.use(bodyParser.json());
-
-
-
-
-
-const TOKEN = process.env.TELEGRAM_TOKEN || '991436394:AAHxBLFxCl7aAkh91bhDNCJIKrVdRAhdmzI';
+var request = require('request');
 const TelegramBot = require('node-telegram-bot-api');
-const options = {
-    webHook: {
-        port: process.env.PORT
+
+// Bot config
+const token = '1060187211:AAG4N-2oGbyLQRf-VPPJ2sOIXhOKRyyv25M';
+const bot = new TelegramBot(token, {polling: true});
+
+// Reply to /start
+bot.onText(/\/start/, (msg, match) => {
+    const start = match.input.split(' ')[1];
+  
+    // var start = match[1];
+    // console.log(start);
+    
+    var chatId = msg.chat.id;
+    if (start === undefined) {
+      bot.sendMessage(
+        chatId, 'Welcome, " ' + msg.chat.first_name + ' ' + msg.chat.last_name
+        + ' " to " My Cipher Bot ",\nThe personalized Telegram Bot for self-learning and '
+        + '\nself-experimenting adventures on anything and everything, \nfor own creator " Mr. Arjun Krishna ".\n🙂'
+        );
+      return;
     }
-};
-
-const url = process.env.APP_URL || 'https://my-corona-tracker-bot.herokuapp.com:443';
-const bot = new TelegramBot(TOKEN, options);
-
-bot.setWebHook(`${url}/bot${TOKEN}`);
-
-bot.on('message', function onMessage(msg) {
-    bot.sendMessage(msg.chat.id, 'Hey, I am alive on Heroku!');
-
-})
+  });
+  
+  
